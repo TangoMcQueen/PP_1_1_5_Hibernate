@@ -26,7 +26,6 @@ public class UserDaoJDBCImpl implements UserDao {
                       `age` INT(3) NULL,
                       PRIMARY KEY (`id`));""");
         } catch (SQLException e) {
-            System.out.println("Ошибка при создании таблицы");
             e.printStackTrace();
         }
     }
@@ -35,7 +34,6 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = getConnection().createStatement()) {
             statement.executeUpdate("DROP TABLE IF EXISTS user");
         } catch (SQLException e) {
-            System.out.println("Не удалось удалить таблицу user");
             e.printStackTrace();
         }
     }
@@ -48,7 +46,6 @@ public class UserDaoJDBCImpl implements UserDao {
             pStatement.setByte(3, age);
             pStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("При сохранении пользователя произошла ошибка");
             e.printStackTrace();
         }
     }
@@ -59,7 +56,6 @@ public class UserDaoJDBCImpl implements UserDao {
             pStatement.setLong(1, id);
             pStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("При удалении пользователя произошла ошибка");
             e.printStackTrace();
         }
     }
@@ -77,7 +73,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 userList.add(user);
             }
         } catch (SQLException e) {
-            System.out.println("При получении списка пользователей произошла ошибка");
             e.printStackTrace();
         }
         return userList;
@@ -87,7 +82,6 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = getConnection().createStatement()) {
             statement.executeUpdate("DELETE FROM user");
         } catch (SQLException e) {
-            System.out.println("При очистке таблицы произошла ошибка");
             e.printStackTrace();
         }
     }
